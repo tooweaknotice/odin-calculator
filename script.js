@@ -1,22 +1,19 @@
-let numA = ``;
-let numB = ``;
-let strA = ``;
-let strB = ``;
+let num = ``;
 let lastOperator = ``;
 let operator = ``;
 let result = ``;
-let display = ``;
+let display = document.querySelector(`.display`);
 
 let btnNumber = document.querySelectorAll(`.number`);
 btnNumber.forEach(btn => {
   btn.addEventListener(`click`, (e) => {
     if (result === ``){
       result = result.concat(e.target.innerText);
-      console.log(`Result is ` + result);
+      display.textContent = result;
     }
     else {
-      numB = numB.concat(e.target.innerText);
-      console.log(`numB is ` + numB);
+      num = num.concat(e.target.innerText);
+      display.textContent = num;
     }
   })
 }
@@ -26,15 +23,31 @@ let btnOperator = document.querySelectorAll(`.operator`);
 btnOperator.forEach(btn => {
   btn.addEventListener(`click`, (e) => {
     operator = e.target.innerText;
-    if (result !== `` && numB !== ``){
-      result = operate(result, numB, lastOperator);
-      numB = ``;
-      console.log(`Result is ` + result);
+    if (result !== `` && num !== ``){
+      result = operate(result, num, lastOperator);
+      num = ``;
+      display.textContent = result;
+    }
+    if (operator === `=`){
+      reset();
     }
     lastOperator = operator;
   })
 }
 );
+
+let btnClear = document.querySelector(`.clear`);
+btnClear.addEventListener(`click`, (e) => {
+  reset();
+  display.textContent = 0;
+})
+
+function reset(){
+  num = ``;
+  lastOperator = ``;
+  operator = ``;
+  result = ``;
+}
 
 function add(a, b){
   return a + b;

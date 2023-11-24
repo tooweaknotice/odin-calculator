@@ -2,7 +2,6 @@ let numA = ``;
 let numB = ``;
 let lastOperator = ``;
 let operator = ``;
-let result = ``;
 let display = document.querySelector(`.display`);
 let btnNumber = document.querySelectorAll(`.number`);
 
@@ -46,7 +45,6 @@ function reset(){
   numB = ``;
   lastOperator = ``;
   operator = ``;
-  result = ``;
   display.textContent = 0;
 }
 
